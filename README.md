@@ -1,5 +1,4 @@
 # Infosys_Springboard
-# Infosys_Springboard
 
 ## Project Overview
 This repository implements **Milestone 1 – Code Explainer** for the Infosys CodeGenie Internship.  
