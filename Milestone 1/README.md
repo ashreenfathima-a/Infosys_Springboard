@@ -1,52 +1,83 @@
-Infosys_Springboard
+Infosys CodeGenie Project – Milestone 1: Code Explainer
 Project Overview
-This repository implements Milestone 1 – Code Explainer for the Infosys CodeGenie Internship. It builds a pipeline to parse and analyze AI-related Python code snippets using:
 
-AST (Abstract Syntax Tree) for parsing
+This milestone is part of the Infosys CodeGenie – AI Explainer and Code Generator Project.
+The objective of this stage is to build a Code Explainer pipeline that can analyze Python code snippets, extract their structure, and generate meaningful embeddings using advanced NLP models.
 
-Tokenization
+This milestone focuses on developing the foundation for a larger system that will later use Retrieval-Augmented Generation (RAG) to provide context-aware explanations for entire codebases.
 
-Pretrained NLP models: MiniLM, DistilRoBERTa, MPNet
+Objective
 
-Code Snippets
-10 small AI/ML-related functions, including:
+The goal of this milestone is to:
 
-Activation functions (Sigmoid, ReLU, Softmax)
+Prepare a set of Python code snippets.
+Parse each snippet using the Abstract Syntax Tree (AST) to understand its components and hierarchy.
+Tokenize the code to prepare it for model-based analysis.
+Generate embeddings using three pretrained transformer models: MiniLM, DistilRoBERTa, and CodeBERT.
+Compare the models by visualizing similarities through heatmaps and t-SNE plots.
+Problem Statement
 
-Loss function (MSE)
+Existing AI-based code assistants are good at understanding general programming concepts, but they often fail when it comes to specific project-level code understanding.
+Because these models lack awareness of the local codebase, their explanations tend to be generic or even inaccurate.
 
-Gradient Descent
+To overcome this limitation, we aim to design an AI system that can understand the context of a particular project.
+This milestone represents the first step in that direction — focusing on parsing, embedding, and visualizing code semantics.
 
-Linear regression prediction
+Methodology
+Step 1: Code Collection
 
-One-hot encoding
+A set of ten Python code snippets was prepared. These included simple functions for mathematical operations, activation functions, and basic algorithms such as recursion and loops. This ensures diverse coverage of syntax and structure.
 
-Pipeline Steps
-AST Parsing → Extract functions, classes, imports
+Step 2: Code Parsing using AST
 
-Tokenization → Prepare code for NLP models
+We used Python’s built-in ast (Abstract Syntax Tree) library to parse each snippet.
+This allows the extraction of:
 
-Embeddings → Generate vector representations using MiniLM, DistilRoBERTa, MPNet
+Function and class names
+Variable assignments
+Loops and conditions
+Import statements
 
-Similarity Analysis & Visualization → Heatmaps and PCA scatter plots to show functional relationships
+Parsing through AST ensures the model captures not just text, but also code logic and structure.
 
-Observations
-MiniLM embeddings grouped activation functions (sigmoid, ReLU, softmax) closely
+Step 3: Tokenization
 
-DistilRoBERTa embeddings showed slightly different clustering but still captured functional similarity
+The tokenize and io libraries were used to break the code into individual tokens.
+Tokenization converts source code into meaningful components, enabling the embedding models to process them effectively.
 
-MPNet embeddings captured semantic similarity best, separating prediction, loss, and encoding functions
+Step 4: Embedding Generation
 
-Overall, pretrained NLP models can effectively represent AI code structures and relationships
+Each tokenized snippet was passed into three pretrained transformer models:
 
-How to Run
-Open Ashreen Fathima Milestone 1.ipynb in Colab
+MiniLM-L6-v2: General-purpose, lightweight NLP model.
+DistilRoBERTa-base: Optimized for sentence-level representations and semantic understanding.
+CodeBERT-base: A code-specific model trained on large GitHub repositories that understands syntax and semantics of source code.
+Step 5: Visualization
 
-Run all cells
+Two types of visualizations were created to interpret model performance:
 
-View AST parsing output, similarity heatmaps, and PCA plots
+Heatmap: Displays pairwise cosine similarity between embeddings to show how closely related snippets are.
+t-SNE Plot: Reduces high-dimensional embeddings to a two-dimensional space for intuitive visualization of clustering patterns.
+Results and Observations
+MiniLM and DistilRoBERTa embeddings showed weak semantic relationships because they are trained mainly on natural language data.
+CodeBERT generated more meaningful similarity values, grouping conceptually similar snippets closer together in the heatmap and t-SNE visualization.
+The t-SNE plot demonstrated clear separation between unrelated snippets and visible clustering among functionally similar ones.
+The experiment validated that code-specific models outperform generic NLP models in understanding programming code structure and meaning.
+Key Insights
+AST parsing helps capture the logical structure of code, not just textual content.
+Tokenization enables model-friendly representation of code syntax.
+CodeBERT embeddings are better suited for code-based tasks compared to general NLP models.
+Visualizations like heatmaps and t-SNE plots help interpret model behavior effectively.
+This pipeline serves as a baseline for integrating Retrieval-Augmented Generation (RAG) in future milestones.
+Conclusion
 
-Files in this Repository
-Ashreen Fathima Milestone 1.ipynb → Colab notebook containing full implementation
+This milestone successfully demonstrates how different transformer models interpret programming code.
+By combining AST parsing, tokenization, and embedding comparison, we have built a foundation for the next phase of the CodeGenie project — implementing a context-aware code explainer powered by RAG (Retrieval-Augmented Generation).
+This approach will allow the AI to deliver project-specific, accurate, and context-rich code explanations in future milestones.
 
-README.md → Project description, methodology, and observations
+Tools and Technologies Used
+Python
+Google Colaboratory
+Libraries: ast, tokenize, io, transformers, sentence-transformers, scikit-learn, matplotlib, seaborn
+Models: MiniLM-L6-v2, DistilRoBERTa-base, CodeBERT-base
+Visualization: Heatmap (Seaborn), t-SNE (Scikit-learn)
