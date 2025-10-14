@@ -1,0 +1,99 @@
+ ** Milestone 2 – CodeGenie AI Explainer & Code Generator **
+
+
+**Project Overview**
+
+This project implements Milestone 2 of the Infosys CodeGenie program. The objective is to generate code using state-of-the-art language models, compare their performance, and visualize the results.
+
+Models implemented:
+
+DeepSeek-Coder-1.3B (Salesforce/codegen-350M-multi) – simplified version for testing
+
+Phi-2-2.7B (microsoft/phi-2)
+
+Optional models for extended testing:
+
+Gemma-2B-IT (google/gemma-2b-it)
+
+Stable-Code-3B (stabilityai/stable-code-3b)
+
+Replit-Code-3B (replit/replit-code-v1-3b)
+
+Folder Structure
+Milestone_2/
+│
+├── Milestone_2_Ashreen_fathima (4).ipynb   # Main notebook
+├── fixed_notebook.ipynb                     # Cleaned notebook
+├── deepseek_output.txt                       # Sample output from DeepSeek
+├── phi2_output.txt                            # Sample output from Phi-2
+├── response_times_plot.png                   # Visualization of model performance
+└── README.md                                 # This file
+
+Features
+1. Interactive Code Generation
+
+The notebook allows selection of the model and input code prompts.
+
+Models generate code inline in the notebook cells.
+
+2. Performance Testing
+
+Each model is tested on 10 sample prompts across multiple programming domains.
+
+Response time is measured for each prompt.
+
+3. Visualization
+
+Average response time per model is visualized using bar plots.
+
+Helps compare efficiency and speed of different models.
+
+How to Run
+Prerequisites
+
+Python 3.10+
+
+Jupyter Notebook or VS Code with Notebook support
+
+Required packages:
+
+pip install transformers accelerate torch matplotlib pandas gradio nbformat
+
+Steps
+
+Open Milestone_2_Ashreen_fathima (4).ipynb in Jupyter Notebook or VS Code Notebook.
+
+Run each cell sequentially to:
+
+Load models (DeepSeek, Phi-2)
+
+Generate code for sample prompts
+
+Measure response time
+
+Visualize results
+
+Check the outputs inside the notebook or saved .txt / .png files.
+
+Sample Output
+
+Generated code (DeepSeek):
+
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5)+1):
+        if n % i == 0:
+            return False
+    return True
+
+
+Visualization of Response Time:
+
+Notes
+
+Only DeepSeek and Phi-2 are used for visualization to avoid GPU OOM errors.
+
+Outputs are displayed in notebook cells and optionally saved as .txt or .png files.
+
+The notebook has been cleaned using nbconvert to remove widget metadata (fixed_notebook.ipynb).
