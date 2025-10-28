@@ -1,17 +1,17 @@
-#CodGenie -Intelligent code explainer and generator system
+### CodGenie -Intelligent code explainer and generator system
 
 An intelligent code explainer and generator system built with Streamlit, JWT Authentication, and state-of-the-art AI models.  
 This application empowers developers, students, and coders to **understand, generate, and improve code** instantly — all in one secure interface.
 
 
-##Features
+### Features
 
-#Authentication System
+## Authentication System
 - Secure **JWT-based login and registration**
 - Roles: `Admin`, `Developer`, `General User`, and `Student`
 - Passwords stored securely using **bcrypt hashing**
 
-#AI-Powered Code Intelligence
+## AI-Powered Code Intelligence
 - **Code Explanation:** Understand complex code instantly
 - **Code Generation:** Generate optimized code snippets from natural language prompts
 - **Multi-language Support:** Python, JavaScript, Java, SQL, C++
